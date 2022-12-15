@@ -71,3 +71,19 @@ function top3(sentence){
   }
   return topThree
 }
+
+function boldPassage(word, text) {
+  text = offensiveWordFilter(offensiveWords, text);
+  let htmlString = "<p>";
+  let textArray = text.split(" ");
+  textArray.forEach(function(element) {
+    if (word === element) {
+      htmlString = htmlString.concat("<b>" + element + "</b>");
+    } else {
+      htmlString = htmlString.concat(element);
+    }
+    htmlString = htmlString.concat(" ");
+  });
+  return htmlString + "</p>";
+}
+
