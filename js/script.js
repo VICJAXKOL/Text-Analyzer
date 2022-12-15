@@ -39,3 +39,11 @@ function offensiveWordFilter(offensiveWords, text){
   });
   return emptyArray.join(" ");
 }
+
+function punctuationRemover(word){
+  let punctuations = [".", ",", "-","?","!"]
+  punctuations.forEach(function(element){
+      word = word.replace(element, "")
+  })
+  return word;
+}
