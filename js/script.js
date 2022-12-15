@@ -47,3 +47,27 @@ function punctuationRemover(word){
   })
   return word;
 }
+
+function top3(sentence){
+  let top = []
+  let topThree = ""
+  let myTop = sentence.split(" ")
+  let myNewTop = [...new Set(myTop)]
+  myNewTop.forEach(function(element){
+    let elementFreeOfPunctuation = punctuationRemover(element)
+    let counter = numberOfOccurrencesInText(elementFreeOfPunctuation, sentence)
+    let wordCountArray = [];
+    wordCountArray.push(elementFreeOfPunctuation);
+    wordCountArray.push(counter);
+    top.push(wordCountArray)
+  });
+  top.sort(function(a,b){
+    return b[1] - a[1]  
+  });
+  for( let i =0; i<top.length; i++){
+    if (i <= 2){
+      topThree = topThree.concat("<li>", top[i][0] + ":" + top[i][1], "</li>") 
+    }
+  }
+  return topThree
+}
